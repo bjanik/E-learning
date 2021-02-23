@@ -27,7 +27,7 @@
 }
 .home{
     width:80%;
-    margin-left: 7em;
+    padding-left: 5em;
 }
 
 .nav_right{
@@ -41,6 +41,7 @@
 .aside_right{
     background-color: #25252A;
     width:15%;
+    height: 100vh;
 
 }
 .aside_right a{
