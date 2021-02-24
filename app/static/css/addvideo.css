@@ -1,0 +1,105 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+#container{
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar{
+    background-color: #25252A;
+    height: 9em;
+    display: flex;
+    text-decoration: none; 
+    line-height: 8em;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.5em;
+}
+
+.navbar a:hover{
+    transition-delay: 0.5ms;
+    color: #ffffff
+}
+.home{
+    width:80%;
+    padding-left: 3em;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.nav_right{
+    display: flex;
+    width:20%;
+    padding-right: 3em;
+}
+
+.login{
+    padding-left: 5em;
+}
+.aside_right{
+    background-color: #25252A;
+    width:15%;
+    height: 100vh;
+
+}
+.aside_right a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+.aside_right a:hover{
+    transition-delay: 0.5ms;
+    color:#558EF8
+}
+
+.categorie{
+    font-size: 1em;
+}
+
+.cat1 {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.container_language{
+    display: flex;
+    flex-direction: column;
+    background-color: #363A50;
+    padding-top: 1em;
+    width:90%;
+    margin:0 auto;
+}
+
+.container_language a{
+    padding-bottom: 0.5em;
+}
+
+.robot{
+    margin:0 auto;
+
+}
+
+.robot img{
+    width:12em;
+    padding-left: 6em;
+   
+}
+
+.navbar button{
+    background-color: #558EF8;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border:0.16em solid #000000;
+    padding:0.8em;
+    border-radius: 0.4em;
+    width: 9em;
+
+}
+
+
