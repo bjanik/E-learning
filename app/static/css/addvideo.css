@@ -66,11 +66,14 @@
     width: 60%;
     margin: 0 auto;
     padding-top: 3em;
+    
 }
+
 .container {
     padding: 4em;
     width: 70%;
     border: 1px solid lightgray;
+    border-radius: 0.5em;
     background-color: #353B4F;
     margin: 0 auto;
 }
@@ -96,6 +99,10 @@ button:hover {
     color: #ffffff;
 }
 
+.buttons{
+    padding-top: 2em;
+}
+
 .buttons::after {
     content: "";
     clear: both;
@@ -114,9 +121,11 @@ button:hover {
 }
 
 #cars {
-    width: 6em;
+    width: 7em;
+    
 }
 
 .signup {
     font-size: 1.3em;
+    border-radius: 0.5em;
 }
