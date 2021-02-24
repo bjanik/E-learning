@@ -1,0 +1,22 @@
+version: "3"
+services:
+  db:
+    build: ./db 
+    environment:
+      - MYSQL_ROOT_PASSWORD=pwq123
+      - MYSQL_DATABASE=elearning.db
+      - MYSQL_USER=root
+
+  flask:
+    build: ./app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_RUN_PORT=4000
+      - MYSQL_ROOT_PASSWORD=pwd123
+      - MYSQL_DATABASE=elearning.db
+      - MYSQL_USER=root
+      - MYSQL_HOST=elearning_db_1
+    ports: 
+      - "3000:4000"
+    restart: always
+    command: python3 run.py
