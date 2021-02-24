@@ -29,19 +29,27 @@
         </div>
         </nav>
         <div class="form_addlink">
-            <form action="/action_page.php" id="carform">
-                <label for="fname">Firstname:</label>
-                <input type="text" id="fname" name="fname">
-                <input type="submit">
-              </form>
-              
-              <label for="cars">Choose a car:</label>
-              <select name="cars" id="cars" form="carform">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
-              </select>
+            <div id="app">
+                <form id="form" method="GET">
+                  <div class="container">
+                    <p>Please enter your video link</p>
+                    <label for="text">Your Link</label>
+                    <input type="text" placeholder="Your Link" name="link" required />
+                    <label for="email">Password Confirmation</label>
+                    <input
+                      type="password"
+                      placeholder="Enter Password Confirmation"
+                      name="password-confirm"
+                      required
+                    />
+          
+                    <div class="buttons">
+                      <button id="add" type="button" class="signup">Add link</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+          
         </div>
     </div>
 </body>
