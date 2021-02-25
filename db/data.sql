@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS videos (
             
 CREATE TABLE IF NOT EXISTS users (
             ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            pseudo VARCHAR(200) NOT NULL,
+            name VARCHAR(200) NOT NULL,
             email VARCHAR(200) NOT NULL,
-            pwd VARCHAR(200) NOT NULL,
+            passeword VARCHAR(200) NOT NULL,
             UNIQUE (pseudo, email)
             );
 
@@ -41,6 +41,9 @@ INSERT INTO categories (category) VALUES
                         ('Cryptographie');
 
 INSERT INTO videos (link, title, author, categoryid, duration, ranking) VALUES
+    ('https://www.youtube.com/watch?v=psaDHhZ0cPs', 'APPRENDRE LE PYTHON #1 ? LES BASES & PREREQUIS', 'Graven - Développement', 1, '00:09:27', 4.93),
+    ('https://www.youtube.com/watch?v=9Os0o3wzS_I', 'Python Tutorial for Beginners 8: Functions', 'Corey Schafer', 1, '00:21:47', 4.94),
+    ('https://www.youtube.com/watch?v=apACNr7DC_s&t=117s', 'Python Classes and Objects  ||  Python Tutorial  ||  Learn Python Programming', 'Socratica', 1, '00:10:32', 4.92),
     ('https://www.youtube.com/watch?v=NmM9HA2MQGI', 'Secret Key Exchange (Diffie-Hellman) - Computerphile', 'Computerphile', 8, '00:08:40', 4.94),
     ('https://www.youtube.com/watch?v=KOdfpbnWLVo', 'Hello World in Python ||  Python Tutorial  ||  Python Programming', 'Socratica', 1, '00:02:47', 4.9),
     ('https://www.youtube.com/watch?v=lsMQRaeKNDk', 'What is a REST API?', 'IBM Cloud', 7, '00:09:12', 4.89),
