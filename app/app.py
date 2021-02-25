@@ -15,8 +15,9 @@ def index():
     db = DB("elearning")
     db.open_connection()
     videos = db.get_videos_by_category()
+    categories = db.get_categories()
     db.close_connection()
-    return render_template("index.html")
+    return render_template("index.html", categories=categories, videos=videos)
 
 @app.route("/login")
 def login():
@@ -31,9 +32,11 @@ def category(name: str):
     categories = db.get_categories()
     videos = db.get_videos_by_category(name)
     db.close_connection()
-    print(videos)
-    print(categories)
-    return name
+    return render_template('index.html', categories=categories, videos=videos)
+
+@app.route("/new_user", methods=["POST"])
+def new_user():
+    pass
 
 @app.route("/add")
 def add():

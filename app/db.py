@@ -24,13 +24,15 @@ class DB:
         query = 'SELECT category FROM categories'
         self._cursor.execute(query)
         categories = self._cursor.fetchall()
+        categories = [cat[0] for cat in categories]
+        categories.sort()
         return categories
 
     def get_videos_by_category(self, category=''):
         if category:
-            query = f'SELECT * FROM videos,categories where categories.ID=videos.categoryid and category LIKE "{category}"'
+            query = f'SELECT link, title, category FROM videos,categories WHERE categories.ID=videos.categoryid AND category LIKE "{category}"'
         else:
-            query = f'SELECT * FROM videos LIMIT 16'
+            query = f'SELECT link, title, category FROM videos,categories WHERE categories.ID=videos.categoryid LIMIT 12'
         self._cursor.execute(query)
         videos = self._cursor.fetchall()
         return videos
