@@ -1,8 +1,5 @@
 
-
-CREATE database IF NOT EXISTS elearning;
 USE elearning;
-
 
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -25,8 +22,10 @@ CREATE TABLE IF NOT EXISTS videos (
             
 CREATE TABLE IF NOT EXISTS users (
             ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            mail VARCHAR(200) NOT NULL,
-            pwd VARCHAR(200) NOT NULL
+            pseudo VARCHAR(200) NOT NULL,
+            email VARCHAR(200) NOT NULL,
+            pwd VARCHAR(200) NOT NULL,
+            UNIQUE (pseudo, email)
             );
 
 
