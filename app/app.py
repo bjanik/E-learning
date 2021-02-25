@@ -1,3 +1,5 @@
+import os
+
 from flask import (
     Flask,
     jsonify,
@@ -14,12 +16,12 @@ def index():
     db.open_connection()
     videos = db.get_videos_by_category()
     db.close_connection()
-    return "Index"
+    return render_template("index.html")
 
 @app.route("/login")
 def login():
     """Simply returns the login page"""
-    return "login.html"
+    return render_template("login.html")
 
 @app.route("/categories/<string:name>")
 def category(name: str):
@@ -36,7 +38,7 @@ def category(name: str):
 @app.route("/add")
 def add():
     """ Returns adding video page"""
-    return "addVideo.html"
+    return render_template("addVideo.html")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4000, debug=True)
+    app.run(host='0.0.0.0', port=os.environ['FLASK_RUN_PORT'], debug=True)
