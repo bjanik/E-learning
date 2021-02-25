@@ -28,21 +28,32 @@
             </div>
         </div>
         </nav>
+        <div class="container_video">
         <div class="aside_right">
             <div class="categorie">
                 <div class="cat1">
                     <a href="#">Categories</a>
                 </div>
                 <div class="container_language">
-                    <a href="#" class="language">Python</a>
-                    <a href="#" class="language">JavaScript</a>
-                    <a href="#" class="language">Html</a>
-                    <a href="#" class="language">Docker</a>
-                    <a href="#" class="language">Sql</a>
-                    <a href="#" class="language">Reseau</a>
+                   {% for category in categories %}
+                        <a href="/categories/{{category}}" class="language">{{ category }}</a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
+        <div class="wrapper_container">
+        <div class="wrapper">
+            {% for video in videos %}
+            <div class="box">
+                    <a href="/"></a>
+                    <iframe src={{video[0]}} frameborder="0"></iframe>
+                    <span>{{ video[1] }}</span>
+                    <span>{{ video[2] }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
     </div>
 </body>
 </html>

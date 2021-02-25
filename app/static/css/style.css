@@ -45,8 +45,9 @@
 }
 .aside_right{
     background-color: #25252A;
-    width:15%;
-    height: 100vh;
+    padding:2em;
+   
+
 
 }
 .aside_right a{
@@ -73,8 +74,8 @@
     flex-direction: column;
     background-color: #363A50;
     padding-top: 1em;
-    width:90%;
     margin:0 auto;
+    padding: 1em;
 }
 
 .container_language a{
@@ -102,5 +103,31 @@
     width: 9em;
 
 }
+/****container video in grid remplate******/
+
+.container_video{
+    display: flex;
+
+}
+
+.wrapper_container{
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+.box {
+    background-color:#363B4F;
+    color: #fff;
+  }
+  
+  .wrapper {
+    width: auto;
+    display: grid;
+    grid-gap: 7px;
+    grid-template-columns: repeat(4, 300px);
+    grid-template-rows: 200px 200px 200px;
+    grid-auto-flow: column;
+
+  }
 
 
