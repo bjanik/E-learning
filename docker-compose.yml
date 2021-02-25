@@ -15,7 +15,7 @@ services:
       - MYSQL_ROOT_PASSWORD=pwd123
       - MYSQL_DATABASE=elearning
       - MYSQL_USER=root
-      - MYSQL_HOST=elearning_db_1
+      - MYSQL_HOST=e-learning_db_1
     ports: 
       - "3000:4000"
     restart: always
