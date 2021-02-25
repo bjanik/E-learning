@@ -30,17 +30,17 @@
         </nav>
         <div class="form_addlink">
             <div id="app">
-                <form id="form" method="POST" action="{{url_for()}}">
+                <form id="form" method="post" action="{{url_for()}}">
                     <div class="container">
                         <label for="text" class="label_title">Your name</label>
                         <input type="text" placeholder="Enter your name" name="name" required />
                         <label  class="label_title">Enter your email</label>
                         <input type="email" placeholder="Enter a valid mail" name="email" required />
                         <label for="pass" class="label_title">Password</label>
-                        <input type="password" id="pass" name="password"
+                        <input type="password" id="pass1" name="password" value={{password1}}
                         placeholder="Enter your password" minlength="10" required>
                         <label for="pass" class="label_title">Confirm your password</label>
-                        <input type="password" id="pass1" name="password" value="{{password}}"
+                        <input type="password" id="pass2" name="password" value="{{password2}}"
                         placeholder="Confirm your password" minlength="10" required>
                         <div class="buttons">
                             <button id="add" type="submit" class="signup">Submit</button>
