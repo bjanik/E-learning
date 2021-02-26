@@ -13,7 +13,7 @@
         <nav class="navbar">
             <div class="home">
                 <div>
-                    <button><a href="#">Home</a></button>
+                    <button><a href="/">Home</a></button>
                 </div>
                 <div class="robot">
                     <img src="../static/img/robot-mecanico.png" alt="logo mecanique" class="logo">
@@ -21,10 +21,10 @@
             </div>
             <div class="nav_right">
             <div class="add_video">
-                <button><a href="#">Add Video</a></button>
+                <button><a href="/add">Add Video</a></button>
             </div>
             <div class="login">
-                <button><a href="#">Login</a></button>
+                <button><a href="/login">Login</a></button>
             </div>
         </div>
         </nav>
@@ -32,7 +32,7 @@
         <div class="aside_right">
             <div class="categorie">
                 <div class="cat1">
-                    <a href="#">Categories</a>
+                    <a>Categories</a>
                 </div>
                 <div class="container_language">
                    {% for category in categories %}
@@ -45,7 +45,6 @@
         <div class="wrapper">
             {% for video in videos %}
             <div class="box">
-                    <a href="/"></a>
                     <iframe src={{video[0]}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <span>{{ video[1] }}</span>
                     <span>{{ video[2] }}</span>
