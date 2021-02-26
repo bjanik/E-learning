@@ -9,6 +9,7 @@ from flask import (
 )
 
 from db import DB
+from video import inspect_video
 
 app = Flask(__name__)
 
@@ -39,6 +40,16 @@ def category(name: str):
 @app.route("/new_user", methods=["POST"])
 def new_user():
     pass
+
+@app.route("/new_video", methods=["POST"])
+def new_video():
+    link = request.form['link']
+    category = request.form['cat']
+    infos = inspect_video(link)
+    if infos is None:
+        return "Bad"
+    else:
+        return "Good"
 
 @app.route("/add")
 def add():
