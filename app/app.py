@@ -1,9 +1,11 @@
 import os
+import sys
 
 from flask import (
     Flask,
     jsonify,
-    render_template
+    render_template,
+    request
 )
 
 from db import DB
@@ -41,7 +43,11 @@ def new_user():
 @app.route("/add")
 def add():
     """ Returns adding video page"""
-    return render_template("addVideo.html")
+    db = DB("elearning")
+    db.open_connection()
+    categories = db.get_categories()
+    db.close_connection()
+    return render_template("addVideo.html", categories=categories)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=os.environ['FLASK_RUN_PORT'], debug=True)
