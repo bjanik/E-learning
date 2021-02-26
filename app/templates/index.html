@@ -46,8 +46,9 @@
             {% for video in videos %}
             <div class="box">
                     <iframe src={{video[0]}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <span>{{ video[1] }}</span>
-                    <span>{{ video[2] }}</span>
+                    <div class="spa"><span class="desc">{{ video[1] }}</span>
+                    <span class="desc">{{ video[2] }}</span></div>
+                    
             </div>
             {% endfor %}
         </div>

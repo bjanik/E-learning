@@ -7,6 +7,8 @@
 #container{
     font-family: 'Roboto', sans-serif;
     background-color: #E7EFFF;
+    background-size: cover;
+    min-height: 100vh;
 
 }
 
@@ -49,12 +51,13 @@
 .aside_right{
     background-color: #25252A;
     padding:2em;
+    min-height: 100vh;
 
 }
 .aside_right a{
     text-decoration: none;
     color: white;
-    text-align: center;
+    text-align: left;
 }
 .aside_right a:hover{
     transition-delay: 0.5ms;
@@ -81,6 +84,8 @@
 
 .container_language a{
     padding-bottom: 0.5em;
+    padding-top: 1em;
+    text-align: left;
 }
 
 .robot{
@@ -119,15 +124,22 @@
 .box {
     background-color:#363B4F;
     color: #fff;
+    height: 25vh;
+    
   }
   
   .wrapper {
     width: auto;
     display: grid;
-    grid-gap: 7px;
-    grid-template-columns: repeat(5, 300px);
+    grid-gap: 3.7em;
+    grid-template-columns: repeat(4,300px);
     grid-template-rows: 200px 200px 200px;
+    
     /*grid-auto-flow: column;*/
+  }
+
+  .spa{
+      padding: 0.5em;
   }
 
 
