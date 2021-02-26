@@ -3,9 +3,6 @@
     padding:0;
 }
 
-html,body{
-    height:100%;
-}
 
 #container{
     font-family: 'Roboto', sans-serif;
@@ -43,6 +40,7 @@ html,body{
     display: flex;
     width:20%;
     padding-right: 3em;
+    
 }
 
 .login{
@@ -51,8 +49,6 @@ html,body{
 .aside_right{
     background-color: #25252A;
     padding:2em;
-   
-
 
 }
 .aside_right a{
