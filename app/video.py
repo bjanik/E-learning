@@ -2,7 +2,6 @@ import pafy
 import sys
 
 def inspect_video(url: str):
-    url = url.replace("/watch?v=", "/embed/")
     try:
         video = pafy.new(url)
         link = url
