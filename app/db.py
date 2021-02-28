@@ -1,12 +1,12 @@
 import mysql.connector
 import os
+import sys
 
 class DB:
-    def __init__(self, db_name):
-        self._db_name = db_name
+    def __init__(self):
         self._dbcon = None
 
-    def open_connection(self):
+    def __enter__(self):
         self._dbcon = mysql.connector.connect(
             host=os.environ['MYSQL_HOST'],
             user=os.environ['MYSQL_USER'],
@@ -15,10 +15,10 @@ class DB:
             database=os.environ['MYSQL_DATABASE']
         )
         self._cursor = self._dbcon.cursor()
+        return self
 
-    def close_connection(self):
+    def __exit__(self, exc_type, exc_val, traceback):
         self._dbcon.close()
-        self._dbcon = None
 
     def get_categories(self):
         query = 'SELECT category FROM categories'
@@ -37,3 +37,11 @@ class DB:
         videos = self._cursor.fetchall()
         return videos
 
+    def insert_new_video(self, category, infos):
+        query = 'SELECT ID FROM categories WHERE category LIKE "%s"'
+        self._cursor.execute(query, category)
+        cat = self._cursor.fetchall()[0][0]
+        infos.insert(3, cat)
+        query = 'INSERT INTO videos (link, title, author, categoryid, duration, ranking) VALUES (%s, %s, %s, %s, %s, %s)'
+        self._cursor.execute(query, tuple(infos))
+        self._dbcon.commit()
