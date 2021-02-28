@@ -4,11 +4,11 @@ import sys
 def inspect_video(url: str):
     try:
         video = pafy.new(url)
-        link = url
+        link = url.replace("/watch?v=", "/embed/")
         author = video.author
         title = video.title
         duration = video.duration
-        rating = video.rating
+        rating = round(video.rating, 2)
         return [link, title, author, duration, rating]
     except ValueError:
         return None
