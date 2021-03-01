@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+import logging
 
 from flask import (
     Flask,
@@ -8,13 +9,22 @@ from flask import (
     render_template,
     request
 )
-
+from logger import log
 from db import DB
 from video import inspect_video
 
+logging.basicConfig(filename="LOG_elearning.log",
+                    filemode="a",
+                    format='%(asctime)s: %(levelname)s: %(message)s',
+                    level=logging.DEBUG,
+                    datefmt='[%Y-%m-%d %H:%M:%S]')
+
+
 app = Flask(__name__)
 
+
 @app.route("/")
+@log
 def index():
     with DB() as db:
         videos = db.get_videos_by_category()
@@ -22,11 +32,13 @@ def index():
     return render_template("index.html", categories=categories, videos=videos)
 
 @app.route("/login")
+@log
 def login():
     """Simply returns the login page"""
     return render_template("login.html")
 
 @app.route("/categories/<string:name>")
+@log
 def category(name: str):
     """Get from database all videos of <name> category"""
     with DB() as db:
@@ -35,10 +47,12 @@ def category(name: str):
     return render_template('index.html', categories=categories, videos=videos)
 
 @app.route("/new_user", methods=["POST"])
+@log
 def new_user():
     pass
 
 @app.route("/new_video", methods=["POST"])
+@log
 def new_video():
     link = request.form.get('link')
     category = request.form.get('cat')
@@ -54,6 +68,7 @@ def new_video():
         return render_template("addVideo.html", categories=categories, message=message)
 
 @app.route("/add")
+@log
 def add():
     """ Returns adding video page"""
     with DB() as db:

@@ -1,6 +1,9 @@
 import pafy
 import sys
+from logger import log
 
+
+@log
 def inspect_video(url: str):
     try:
         video = pafy.new(url)
