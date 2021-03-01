@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 
 from flask import (
     Flask,
@@ -42,12 +43,13 @@ def new_video():
     link = request.form['link']
     category = request.form['cat']
     infos = inspect_video(link)
-    message = 'Failed to add video'
     try:
         with DB() as db:
             categories = db.get_categories()
             db.insert_new_video(category, infos)
             message = 'Video was successfully added'
+    except:
+        message = 'Failed to add video'
     finally:
         return render_template("addVideo.html", categories=categories, message=message)
 
