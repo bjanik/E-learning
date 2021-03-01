@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 
@@ -15,11 +16,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    db = DB("elearning")
-    db.open_connection()
-    videos = db.get_videos_by_category()
-    categories = db.get_categories()
-    db.close_connection()
+    with DB() as db:
+        videos = db.get_videos_by_category()
+        categories = db.get_categories()
     return render_template("index.html", categories=categories, videos=videos)
 
 @app.route("/login")
@@ -30,11 +29,9 @@ def login():
 @app.route("/categories/<string:name>")
 def category(name: str):
     """Get from database all videos of <name> category"""
-    db = DB("elearning")
-    db.open_connection()
-    categories = db.get_categories()
-    videos = db.get_videos_by_category(name)
-    db.close_connection()
+    with DB() as db:
+        categories = db.get_categories()
+        videos = db.get_videos_by_category(name)
     return render_template('index.html', categories=categories, videos=videos)
 
 @app.route("/new_user", methods=["POST"])
@@ -46,18 +43,21 @@ def new_video():
     link = request.form['link']
     category = request.form['cat']
     infos = inspect_video(link)
-    if infos is None:
-        return "Bad"
-    else:
-        return "Good"
+    try:
+        with DB() as db:
+            categories = db.get_categories()
+            db.insert_new_video(category, infos)
+            message = 'Video was successfully added'
+    except:
+        message = 'Failed to add video'
+    finally:
+        return render_template("addVideo.html", categories=categories, message=message)
 
 @app.route("/add")
 def add():
     """ Returns adding video page"""
-    db = DB("elearning")
-    db.open_connection()
-    categories = db.get_categories()
-    db.close_connection()
+    with DB() as db:
+        categories = db.get_categories()
     return render_template("addVideo.html", categories=categories)
 
 if __name__ == '__main__':

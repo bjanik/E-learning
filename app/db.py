@@ -1,28 +1,30 @@
 import mysql.connector
 import os
+import sys
 
 class DB:
-    def __init__(self, db_name):
-        self._db_name = db_name
+    def __init__(self):
         self._dbcon = None
 
-    def open_connection(self):
-        self._dbcon = mysql.connector.connect(
-            host=os.environ['MYSQL_HOST'],
-            user=os.environ['MYSQL_USER'],
-            password=os.environ['MYSQL_ROOT_PASSWORD'],
-            auth_plugin='mysql_native_password',
-            database=os.environ['MYSQL_DATABASE']
-        )
-        self._cursor = self._dbcon.cursor()
+    def __enter__(self):
+        try:
+            self._dbcon = mysql.connector.connect(
+                host=os.environ['MYSQL_HOST'],
+                user=os.environ['MYSQL_USER'],
+                password=os.environ['MYSQL_ROOT_PASSWORD'],
+                auth_plugin='mysql_native_password',
+                database=os.environ['MYSQL_DATABASE']
+            )
+            self._cursor = self._dbcon.cursor()
+            return self
+        except:
+            raise
 
-    def close_connection(self):
+    def __exit__(self, exc_type, exc_val, traceback):
         self._dbcon.close()
-        self._dbcon = None
 
     def get_categories(self):
-        query = 'SELECT category FROM categories'
-        self._cursor.execute(query)
+        self._cursor.execute('SELECT category FROM categories')
         categories = self._cursor.fetchall()
         categories = [cat[0] for cat in categories]
         categories.sort()
@@ -30,10 +32,19 @@ class DB:
 
     def get_videos_by_category(self, category=''):
         if category:
-            query = f'SELECT link, title, category FROM videos,categories WHERE categories.ID=videos.categoryid AND category LIKE "{category}"'
+            query = "SELECT link, title, category FROM videos,categories WHERE categories.ID=videos.categoryid AND category LIKE %s"
+            self._cursor.execute(query, (category,))
         else:
             query = f'SELECT link, title, category FROM videos,categories WHERE categories.ID=videos.categoryid LIMIT 12'
-        self._cursor.execute(query)
+            self._cursor.execute(query)
         videos = self._cursor.fetchall()
         return videos
 
+    def insert_new_video(self, category, infos):
+        query = "SELECT ID FROM categories WHERE category LIKE '%s'"
+        self._cursor.execute(query, category)
+        cat = self._cursor.fetchall()[0][0]
+        infos.insert(3, cat)
+        query = 'INSERT INTO videos (link, title, author, categoryid, duration, ranking) VALUES (%s, %s, %s, %s, %s, %s)'
+        self._cursor.execute(query, tuple(infos))
+        self._dbcon.commit()
