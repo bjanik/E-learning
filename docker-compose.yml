@@ -1,12 +1,14 @@
 version: "3"
 services:
   db:
+    container_name: db
     build: ./db 
     environment:
       - MYSQL_ROOT_PASSWORD=pwd123
       - MYSQL_DATABASE=elearning
       - MYSQL_USER=root
   flask:
+    container_name: flask_app
     build: ./app
     environment:
       - FLASK_ENV=development
@@ -14,8 +16,10 @@ services:
       - MYSQL_ROOT_PASSWORD=pwd123
       - MYSQL_DATABASE=elearning
       - MYSQL_USER=root
-      - MYSQL_HOST=e-learning_db_1
+      - MYSQL_HOST=db
     ports: 
       - "3000:4000"
     restart: always
-    command: python3 app.py
+    depends_on:
+      - db
+    command: ./wait-for-it.sh db:3306 -- python3 app.py
