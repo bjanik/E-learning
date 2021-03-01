@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Elearning Platform</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div id="container">
         <nav class="navbar">
@@ -20,39 +22,40 @@
                 </div>
             </div>
             <div class="nav_right">
-            <div class="add_video">
-                <button><a href="/add">Add Video</a></button>
+                <div class="add_video">
+                    <button><a href="/add">Add Video</a></button>
+                </div>
+                <div class="login">
+                    <button><a href="/login">Login</a></button>
+                </div>
             </div>
-            <div class="login">
-                <button><a href="/login">Login</a></button>
-            </div>
-        </div>
         </nav>
         <div class="container_video">
-        <div class="aside_right">
-            <div class="categorie">
-                <div class="cat1">
-                    <a>Categories</a>
-                </div>
-                <div class="container_language">
-                   {% for category in categories %}
+            <div class="aside_right">
+                <div class="categorie">
+                    <div class="cat1">
+                        <a>Categories</a>
+                    </div>
+                    <div class="container_language">
+                        {% for category in categories %}
                         <a href="/categories/{{category}}" class="language">{{ category }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper_container">
+                <div class="wrapper">
+                    {% for video in videos %}
+                    <div class="box">
+                        <iframe src={{video[0]}} frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
-        <div class="wrapper_container">
-        <div class="wrapper">
-            {% for video in videos %}
-            <div class="box">
-                    <iframe src={{video[0]}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <span>{{ video[1] }}</span>
-                    <span>{{ video[2] }}</span>
-            </div>
-            {% endfor %}
-        </div>
-        </div>
-    </div>
     </div>
 </body>
+
 </html>
