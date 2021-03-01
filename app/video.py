@@ -10,5 +10,5 @@ def inspect_video(url: str):
         duration = video.duration
         rating = round(video.rating, 2)
         return [link, title, author, duration, rating]
-    except ValueError:
+    except:
         return None
