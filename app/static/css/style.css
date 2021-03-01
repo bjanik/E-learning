@@ -3,9 +3,11 @@
     padding:0;
 }
 
+body{
+    font-family: 'Roboto', sans-serif;
+}
 
 #container{
-    font-family: 'Roboto', sans-serif;
     background-color: #E7EFFF;
     background-size: cover;
     min-height: 100vh;
@@ -30,6 +32,14 @@
     transition-delay: 0.5ms;
     color: #ffffff
 }
+
+.navbar{
+    overflow: hidden;
+    position: sticky; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    padding-top: 2em;
+}
 .home{
     width:80%;
     padding-left: 3em;
@@ -43,23 +53,28 @@
     width:20%;
     padding-right: 3em;
     
+    
 }
 
 .login{
     padding-left: 5em;
 }
-.aside_right{
+.aside_right {
     background-color: #25252A;
-    padding:2em;
+    padding: 2em;
     min-height: 100vh;
-
+    position: fixed;
+    height: 100px;
+    top: 0;
+    margin-top: 9em;
 }
-.aside_right a{
+
+.container_language a{
     text-decoration: none;
     color: white;
     text-align: left;
 }
-.aside_right a:hover{
+.container_language a:hover{
     transition-delay: 0.5ms;
     color:#558EF8
 }
@@ -70,7 +85,10 @@
 
 .cat1 {
     margin-bottom: 2em;
-    text-align: center;
+    text-align: left;
+    color: #ffffff;
+    font-size: 1.3em;
+    font-weight: bold;
 }
 
 .container_language{
@@ -80,12 +98,15 @@
     padding-top: 1em;
     margin:0 auto;
     padding: 1em;
+    
 }
 
 .container_language a{
     padding-bottom: 0.5em;
     padding-top: 1em;
     text-align: left;
+    font-weight: bold;
+    font-size: 1.3em;
 }
 
 .robot{
@@ -119,6 +140,7 @@
 .wrapper_container{
     margin: 0 auto;
     padding: 1em;
+    padding-left: 15%;
     
 }
 
@@ -131,16 +153,19 @@
   }
   
   .wrapper {
-    width: auto;
+    padding-top: 5em;
+    width: 100%;
     display: grid;
-    grid-gap: 0.3em;
-    grid-template-columns: repeat(4,300px);
-    grid-template-rows: 245px 245px 245px;
+    grid-gap: 2.3em;
+    grid-template-columns: repeat(3,300px);
+    grid-template-rows: 255px 255px 255px;
+    height: auto;
     /*grid-auto-flow: column;*/
 }
 
   .spa{
       padding: 0.5em;
+      text-align: center;
   }
 
 
