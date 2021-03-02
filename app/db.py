@@ -33,7 +33,7 @@ class DB:
     def get_videos_by_category(self, category=''):
         if category:
             query = "SELECT link, title, category FROM videos,categories WHERE categories.ID=videos.categoryid AND category LIKE %s"
-            self._cursor.execute(query, (category,))
+            self._cursor.execute(query, [category])
         else:
             query = f'SELECT link, title, category FROM videos,categories WHERE categories.ID=videos.categoryid LIMIT 12'
             self._cursor.execute(query)
@@ -41,8 +41,8 @@ class DB:
         return videos
 
     def insert_new_video(self, category, infos):
-        query = "SELECT ID FROM categories WHERE category LIKE '%s'"
-        self._cursor.execute(query, category)
+        query = "SELECT ID FROM categories WHERE category LIKE %s"
+        self._cursor.execute(query, [category])
         cat = self._cursor.fetchall()[0][0]
         infos.insert(3, cat)
         query = 'INSERT INTO videos (link, title, author, categoryid, duration, ranking) VALUES (%s, %s, %s, %s, %s, %s)'

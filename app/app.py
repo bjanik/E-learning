@@ -40,15 +40,15 @@ def new_user():
 
 @app.route("/new_video", methods=["POST"])
 def new_video():
-    link = request.form['link']
-    category = request.form['cat']
+    link = request.form.get('link')
+    category = request.form.get('cat')
     infos = inspect_video(link)
     try:
         with DB() as db:
             categories = db.get_categories()
             db.insert_new_video(category, infos)
             message = 'Video was successfully added'
-    except:
+    except Exception as e:
         message = 'Failed to add video'
     finally:
         return render_template("addVideo.html", categories=categories, message=message)
