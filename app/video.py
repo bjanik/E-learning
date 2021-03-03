@@ -6,6 +6,8 @@ from logger import log
 @log
 def inspect_video(url: str):
     try:
+        if '&' in url:
+            url = url.split('&')[0]
         video = pafy.new(url)
         link = url.replace("/watch?v=", "/embed/")
         author = video.author
