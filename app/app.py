@@ -76,4 +76,4 @@ def add():
     return render_template("addVideo.html", categories=categories)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=os.environ['FLASK_RUN_PORT'], debug=True)
+    app.run(host='0.0.0.0', port=4000, debug=True)
