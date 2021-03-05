@@ -1,4 +1,4 @@
-import mysql.connector
+import psycopg2
 import os
 import sys
 
@@ -8,7 +8,7 @@ class DB:
 
     def __enter__(self):
         try:
-            self._dbcon = mysql.connector.connect(
+            self._dbcon = psycopg2.connect(
                 host=os.environ['AZ_POSTGRES_HOST'],
                 user=os.environ['AZ_POSTGRES_USER'],
                 password=os.environ['AZ_POSTGRES_PASSWORD'],
