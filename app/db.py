@@ -1,4 +1,5 @@
 import mysql.connector
+import psycopg2
 import os
 import sys
 
@@ -8,12 +9,12 @@ class DB:
 
     def __enter__(self):
         try:
-            self._dbcon = mysql.connector.connect(
-                host=os.environ['MYSQL_HOST'],
-                user=os.environ['MYSQL_USER'],
-                password=os.environ['MYSQL_ROOT_PASSWORD'],
+            self._dbcon = psycopg2.connect(
+                host=os.environ['farouk-db-elearning.postgres.database.azure.com'],
+                user=os.environ['farouk@farouk-db-elearning'],
+                password=os.environ['villeneuve92!'],
                 auth_plugin='mysql_native_password',
-                database=os.environ['MYSQL_DATABASE']
+                database=os.environ['postgres']
             )
             self._cursor = self._dbcon.cursor()
             return self

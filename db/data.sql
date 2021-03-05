@@ -1,16 +1,18 @@
 
-USE elearning;
 
+DROP TABLE IF EXISTS videos;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE IF NOT EXISTS categories (
-            ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            category VARCHAR (200) NOT NULL,
+            ID SERIAL PRIMARY KEY,
+            category VARCHAR(200) NOT NULL,
             UNIQUE (category)
             );
 
 CREATE TABLE IF NOT EXISTS videos (
-            ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            link VARCHAR(200),
+            ID SERIAL PRIMARY KEY,
+            link VARCHAR(200) NOT NULL,
             title VARCHAR(200) NOT NULL,
             author VARCHAR(200) NOT NULL,
             categoryid INT NOT NULL,
@@ -21,7 +23,7 @@ CREATE TABLE IF NOT EXISTS videos (
             );
             
 CREATE TABLE IF NOT EXISTS users (
-            ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            ID SERIAL PRIMARY KEY,
             pseudo VARCHAR(200) NOT NULL,
             email VARCHAR(200) NOT NULL,
             pwd VARCHAR(200) NOT NULL,
@@ -57,7 +59,7 @@ INSERT INTO videos (link, title, author, categoryid, duration, ranking) VALUES
     ('https://www.youtube.com/embed/1S0aBV-Waeo', 'Buffer Overflow Attack - Computerphile', 'Computerphile', 8, '00:17:30', 4.96),
     ('https://www.youtube.com/embed/WIgCowf2rHE', 'Python : Chiffrement | Code César (Tuto Débutant / Intermédiaire)', 'Arthurus', 8, '00:08:25', 4.89),
     ('https://www.youtube.com/embed/QMhciTigcVM', 'Brute force | Python | Tuto débutant / intermédiaire', 'Arthurus', 8, '00:07:28', 4.94),
-    ('https://www.youtube.com/embed/V9bTy0gbXIQ', 'Sécurité 1 : Introduction à la Cryptographie', "L'informateur", 8, '00:12:04', 4.96),
+    ('https://www.youtube.com/embed/V9bTy0gbXIQ', 'Sécurité 1 : Introduction à la Cryptographie', 'L informateur', 8, '00:12:04', 4.96),
     ('https://www.youtube.com/embed/bKtFYnrDXFk', 'La Blockchain expliquée en emojis', 'Cookie connecté', 8, '00:12:45', 4.96),
     ('https://www.youtube.com/embed/RwbIMBSr8o8', 'Le cloud computing expliqué en 7 minutes', 'Cookie connecté', 7, '00:07:00', 4.93),
     ('https://www.youtube.com/embed/Al-E4C69UmQ', 'Comprendre les modèles de Cloud (IaaS, PaaS, SaaS, CaaS, FaaS)', 'Cookie connecté', 7, '00:10:09', 4.98),
@@ -72,11 +74,11 @@ INSERT INTO videos (link, title, author, categoryid, duration, ranking) VALUES
     ('https://www.youtube.com/embed/3XFODda6YXo', 'AWS In 5 Minutes | What Is AWS? | AWS Tutorial For Beginners | AWS Training | Simplilearn', 'Simplilearn', 7, '00:05:29', 4.92),
     ('https://www.youtube.com/embed/-OBrKIlSt_Q', 'Oracle Cloud Infrastructure Overview - The true enterprise cloud', 'Oracle Cloud Infrastructure', 7, '00:04:34', 5.0),
     ('https://www.youtube.com/embed/qEU7OlE7MbQ', 'Créer et gérer des projets dans Google Cloud Platform - Démonstration Google Cloud Platform', 'SFEIR TV', 7, '00:05:41', 4.76),
-    ('https://www.youtube.com/embed/NChhdOZV4sY', "Kubernetes : l'essentiel en 7 minutes", 'Cookie connecté', 5, '00:07:21', 4.94),
-    ('https://www.youtube.com/embed/caXHwYC3tq8', "Docker : comprendre l'essentiel en 7 minutes", 'Cookie connecté', 5, '00:07:11', 4.93),
+    ('https://www.youtube.com/embed/NChhdOZV4sY', 'Kubernetes : l essentiel en 7 minutes', 'Cookie connecté', 5, '00:07:21', 4.94),
+    ('https://www.youtube.com/embed/caXHwYC3tq8', 'Docker : comprendre l essentiel en 7 minutes', 'Cookie connecté', 5, '00:07:11', 4.93),
     ('https://www.youtube.com/embed/eGz9DS-aIeY', 'you need to learn Docker RIGHT NOW!! // Docker Containers 101', 'NetworkChuck', 5, '00:23:19', 4.94),
     ('https://www.youtube.com/embed/SXB6KJ4u5vg', 'Docker: Débuter de zéro avec Docker en français - Tutoriel 1/3', 'cocadmin', 5, '00:05:50', 4.95),
-    ('https://www.youtube.com/embed/2vMEQ5zs1ko', "Kubernetes vs. Docker: It's Not an Either/Or Question", 'IBM Cloud', 5, '00:08:03', 4.92),
+    ('https://www.youtube.com/embed/2vMEQ5zs1ko', 'Kubernetes vs. Docker: It s Not an Either/Or Question', 'IBM Cloud', 5, '00:08:03', 4.92),
     ('https://www.youtube.com/embed/eZpLjKv9xvA', 'run Linux on Windows Docker containers!!', 'NetworkChuck', 5, '00:37:58', 4.88),
     ('https://www.youtube.com/embed/LQjaJINkQXY', 'What is Dockerfile | How to create and build Dockerfile | Dockerfile Basic Commands', 'Automation Step by Step - Raghav Pal', 5, '00:10:09', 4.89),
     ('https://www.youtube.com/embed/Qw9zlE3t8Ko', 'Docker Compose in 12 Minutes', 'Jake Wright', 5, '00:12:00', 4.97),
@@ -130,9 +132,9 @@ INSERT INTO videos (link, title, author, categoryid, duration, ranking) VALUES
     ('https://www.youtube.com/embed/33IinMVJf-M', 'HTML & CSS for Beginners Part 13: Background Images', 'Kevin Powell', 4, '00:11:18', 4.82),
     ('https://www.youtube.com/embed/PE8FQ6zihhw', 'Découverte du CSS (1/31) : Présentation', 'Grafikart.fr', 4, '00:07:04', 4.97),
     ('https://www.youtube.com/embed/EM8UlPeBfuk', 'Découverte du CSS (2/31) : Les sélecteurs', 'Grafikart.fr', 4, '00:30:36', 4.96),
-    ('https://www.youtube.com/embed/m5vKQ7ATBNc', "Je corrige les scripts d'Ubuntu - Conseils et bonnes pratiques en BASH", 'cocadmin', 6, '00:16:29', 4.88),
+    ('https://www.youtube.com/embed/m5vKQ7ATBNc', 'Je corrige les scripts d Ubuntu - Conseils et bonnes pratiques en BASH', 'cocadmin', 6, '00:16:29', 4.88),
     ('https://www.youtube.com/embed/Zl7npywCB84', 'Bash Shell Scripting Tutorial For Beginners - Bash Basics in 20 Minutes', 'NovelTech Media', 6, '00:24:38', 5.0),
-    ('https://www.youtube.com/embed/Fiz3lMZhWKM', "Bash[#1] - Comprendre ce qu'est Bash", 'c0d3r sk1llz', 6, '00:07:08', 5.0),
+    ('https://www.youtube.com/embed/Fiz3lMZhWKM', 'Bash[#1] - Comprendre ce qu est Bash', 'c0d3r sk1llz', 6, '00:07:08', 5.0),
     ('https://www.youtube.com/embed/3CR7tS56Obo', 'Scripts 2.1 - Bash : objectifs et entête de scripts | tutos fr', 'xavki', 6, '00:17:47', 5.0),
     ('https://www.youtube.com/embed/t7_7-BK66Xs', 'Scripts 2.2 - Bash : condition If et arguments de CLI | tutos fr', 'xavki', 6, '00:18:55', 5.0),
     ('https://www.youtube.com/embed/XGxtbcAzk-g', 'GNU/Linux #30 - introduction bash', 'FormationVidéo', 6, '00:15:15', 4.86),
@@ -140,7 +142,7 @@ INSERT INTO videos (link, title, author, categoryid, duration, ranking) VALUES
     ('https://www.youtube.com/embed/t5CBRm2Hm88', 'Bash[#6] - Comparer et tester des nombres avec Bash', 'c0d3r sk1llz', 6, '00:05:50', 5.0),
     ('https://www.youtube.com/embed/7d9pW2AzcJw', 'BASH SCRIPTING POUR LES HACKERS | PART 1', 'HackinGeeK', 6, '00:10:17', 5.0),
     ('https://www.youtube.com/embed/2hz7-v2f1sA', 'What is Bash Scripting?', 'Pikuma', 6, '00:09:52', 4.95),
-    ('https://www.youtube.com/embed/4Q9adopz82E', "Gnu / Linux : mesurer simplement le temps d'exécution dans un script BASH", 'Christophe Casalegno', 6, '00:09:01', 5.0);
+    ('https://www.youtube.com/embed/4Q9adopz82E', 'Gnu / Linux : mesurer simplement le temps d exécution dans un script BASH', 'Christophe Casalegno', 6, '00:09:01', 5.0);
 
 
 
