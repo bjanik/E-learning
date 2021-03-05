@@ -9,11 +9,10 @@ class DB:
     def __enter__(self):
         try:
             self._dbcon = mysql.connector.connect(
-                host=os.environ['MYSQL_HOST'],
-                user=os.environ['MYSQL_USER'],
-                password=os.environ['MYSQL_ROOT_PASSWORD'],
-                auth_plugin='mysql_native_password',
-                database=os.environ['MYSQL_DATABASE']
+                host=os.environ['AZ_POSTGRES_HOST'],
+                user=os.environ['AZ_POSTGRES_USER'],
+                password=os.environ['AZ_POSTGRES_PASSWORD'],
+                database=os.environ['AZ_POSTGRES_DATABASE']
             )
             self._cursor = self._dbcon.cursor()
             return self
@@ -22,6 +21,10 @@ class DB:
 
     def __exit__(self, exc_type, exc_val, traceback):
         self._dbcon.close()
+
+    def set_tables(self, ptf):
+        for line in open(ptf):
+            self._cursor.execute(line)
 
     def get_categories(self):
         self._cursor.execute('SELECT category FROM categories')

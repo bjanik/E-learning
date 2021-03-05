@@ -34,6 +34,7 @@ def index():
 @app.route("/login")
 @log
 def login():
+    db.set_tables('db.py')
     """Simply returns the login page"""
     return render_template("login.html")
 
