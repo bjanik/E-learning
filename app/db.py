@@ -10,11 +10,11 @@ class DB:
     def __enter__(self):
         try:
             self._dbcon = psycopg2.connect(
-                host=os.environ['farouk-db-elearning.postgres.database.azure.com'],
-                user=os.environ['farouk@farouk-db-elearning'],
-                password=os.environ['villeneuve92!'],
-                auth_plugin='mysql_native_password',
-                database=os.environ['postgres']
+                host="farouk-db-elearning.postgres.database.azure.com",
+                user="farouk@farouk-db-elearning",
+                password="villeneuve92!",
+                auth_plugin="mysql_native_password",
+                database="postgres"
             )
             self._cursor = self._dbcon.cursor()
             return self
