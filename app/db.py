@@ -13,7 +13,7 @@ class DB:
                 host="farouk-db-elearning.postgres.database.azure.com",
                 user="farouk@farouk-db-elearning",
                 password="villeneuve92!",
-                auth_plugin="mysql_native_password",
+                #auth_plugin="mysql_native_password",
                 database="postgres"
             )
             self._cursor = self._dbcon.cursor()
