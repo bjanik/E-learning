@@ -1,6 +1,7 @@
 import pafy
 import sys
-from logger import log
+
+from .logger import log
 
 
 @log

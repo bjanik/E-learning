@@ -9,9 +9,9 @@ from flask import (
     render_template,
     request
 )
-from logger import log
-from db import DB
-from video import inspect_video
+from .logger import log
+from .db import DB
+from .video import inspect_video
 
 logging.basicConfig(filename="LOG_elearning.log",
                     filemode="a",
